@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "cy:run": "cypress run --project ./_test",
-    "cy:open": "cypress open --project ./_test"
+    "cy:run": "cypress run --project ./_test/cypress_examples",
+    "cy:open": "cypress open --project ./_test/cypress_examples"
   },
   "dependencies": {
     "chai-ajv-json-schema": "1.0.0",

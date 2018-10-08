@@ -29,7 +29,7 @@ describe('Todo API', () => {
   });
 
   it('GET /todos/{todoId}', () => {
-    var todoId = 'FXaJkAY1JL4KJp7u';
+    var todoId = 'IjgSfLcapJvVcf4Y';
     cy.request({
       method: 'GET',
       url: `/todos/${todoId}`
@@ -41,7 +41,7 @@ describe('Todo API', () => {
   });
 
   it('PUT /todos/{todoId}', () => {
-    var todoId = 'FXaJkAY1JL4KJp7u';
+    var todoId = 'IjgSfLcapJvVcf4Y';
     cy.request({
       method: 'PUT',
       url: `/todos/${todoId}`,
@@ -58,7 +58,7 @@ describe('Todo API', () => {
   });
 
   it('DELETE /todos/{todoId}', () => {
-    var todoId = 'FXaJkAY1JL4KJp7u';
+    var todoId = 'IjgSfLcapJvVcf4Y';
     cy.request({
       method: 'DELETE',
       url: `/todos/${todoId}`
