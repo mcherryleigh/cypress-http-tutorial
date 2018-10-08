@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:3030",
+  "integrationFolder": "./cypress/tests",
+  "ignoreTestFiles":["**/tests/api/schema/**"],
+  "defaultCommandTimeout": 10000,
+  "requestTimeout": 10000,
+  "videoUploadOnPasses": false
+}

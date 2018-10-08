@@ -1,0 +1,182 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Todo API",
+    "description": "Manage todos",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3030",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "Todo": {
+      "description": "A task that has to be done",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": true
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "done": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "title",
+        "done"
+      ]
+    },
+    "Todos": {
+      "description": "A list of todos",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Todo"
+      }
+    },
+    "Error": {
+      "description": "A task that has to be done",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer"
+        },
+        "className": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/todos": {
+      "get": {
+        "operationId": "getTodos",
+        "responses": {
+          "200": {
+            "description": "Returns all todos",
+            "schema": {
+              "$ref": "#/definitions/Todos"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTodo",
+        "parameters": [
+          {
+            "name": "todo",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The newly created todo",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          },
+          "400": {
+            "description": "Invalid data",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/todos/{todoId}": {
+      "parameters": [
+        {
+          "name": "todoId",
+          "in": "path",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "get": {
+        "operationId": "getTodo",
+        "responses": {
+          "200": {
+            "description": "The todo with the given todo id",
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          },
+          "404": {
+            "description": "ID not found error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateTodo",
+        "parameters": [
+          {
+            "name": "update",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Todo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the todo"
+          },
+          "400": {
+            "description": "Invalid data",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Unknown todo id",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTodo",
+        "responses": {
+          "200": {
+            "description": "Successfully deleted the todo"
+          },
+          "404": {
+            "description": "Unknown todo id",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}

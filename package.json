@@ -1,0 +1,16 @@
+{
+  "name": "cypress-presentation",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "cy:run": "cypress run --project ./_test",
+    "cy:open": "cypress open --project ./_test"
+  },
+  "dependencies": {
+    "chai-ajv-json-schema": "1.0.0",
+    "cypress": "3.1.0",
+    "cypress-eslint-preprocessor": "1.2.1",
+    "eslint-plugin-chai-friendly": "0.4.1",
+    "eslint-plugin-cypress": "2.0.1"
+  }
+}
